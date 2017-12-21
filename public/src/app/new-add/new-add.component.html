@@ -1,0 +1,23 @@
+<p>
+  Please add your add.
+</p>
+<form #ngForm = 'ngForm' (submit)="uploadAdd(add)">
+<image-upload
+buttonCaption="Add a Image"
+dropBoxMessage="50Mb Limit"
+[max]="1"
+[maxFileSize]="1000000000"
+(uploadFinished)="onUploadFinished($event)"
+></image-upload>
+<select name ="type"
+
+[(ngModel)]="add.type"
+#type='ngModel'>
+    <option value="banner">banner</option>
+    <option value="table">table</option>
+    <option value="video">video</option>
+    <option value="popup">popup</option>
+</select>
+<input type="submit" value="Send image">
+
+</form>

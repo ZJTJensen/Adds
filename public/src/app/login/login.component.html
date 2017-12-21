@@ -1,0 +1,135 @@
+<div id = 'text'>
+  <h2>Adds on Adds</h2>
+  <p>Offering the one stop shop for all your add needs,<br>
+  We here at NAME REQUIRED have one goal in mind:<br>
+  To connect adds with those who need it without any pesky <br>
+  complicated Algorithims.</p>
+  <p>Offering the only user driven add decision on the web.<br>
+  Pick your adds, don't let them pick you.</p>
+</div>
+
+
+
+
+<fieldset id= "register">
+  <legend>Registration</legend>
+
+  <form #regForm='ngForm'(submit)="create(user)">
+    <p class="text">First Name: <input 
+      type="text" 
+      name="first_name" 
+      required 
+      minlength="4" 
+      maxlength="24"
+      [(ngModel)]="user.first_name"
+      #first_name='ngModel'
+    /><br><span *ngIf ="first_name.errors">First Name is Required</span>
+  <div *ngIf='err'>
+      <span *ngIf ="err.errors.first_name">{{err.errors.first_name.message}}</span>
+
+  </div>
+  
+
+        <p class="text">Last Name: <input 
+          type="text" 
+          name="last_name" 
+          required 
+          minlength="4" 
+          maxlength="24"
+          [(ngModel)]="user.last_name"
+          #last_name='ngModel'
+        /><br><span *ngIf ="last_name.errors">Last Name is Required</span>
+        <div *ngIf='err'>
+            <span *ngIf ="err.errors.last_name">{{err.errors.last_name.message}}</span>
+      
+        </div>
+      
+
+        <p class="text">Email: <input 
+          type="text" 
+          name="email" 
+          required 
+          minlength="4" 
+          maxlength="24"
+          [(ngModel)]="user.email"
+          #email='ngModel'
+        /><br><span *ngIf ="email.errors">Email  is Required</span>
+        <div *ngIf='err'>
+            <span *ngIf ="err.errors.email">{{err.errors.email.message}}</span>
+      
+        </div>
+      
+
+        <p class="text">Password: <input 
+          type="password" 
+          name="password" 
+          required 
+          minlength="8" 
+          maxlength="15"
+          pattern="^([a-zA-Z0-9@*#]{8,15})$"
+          [(ngModel)]="user.password"
+          #password='ngModel'
+        /><br><span *ngIf ="password.errors">Password is Required</span>
+        <div *ngIf='err'>
+            <span *ngIf ="err.errors.password">{{err.errors.password.message}}</span>
+      
+        </div>
+      
+
+        <p class="text">Confirm Password: <input 
+          type="password" 
+          name="password_confirm" 
+          required 
+          [(ngModel)]="user.password_confirm"
+          #password_confirm='ngModel'
+          /><br><span *ngIf ="user.password != user.password_confirm">Passwords must match</span>
+          <div *ngIf='err'>
+              <span *ngIf ="err.errors.password_confirm">{{err.errors.password_confirm.message}}</span>
+        
+          </div>
+        
+          <p class="text"> License: 
+            <input type="radio" 
+            id="licensechoice1"
+            name="license"
+            value = "User" checked
+            [(ngModel)]="user.license"
+            #license='ngModel' >
+            <label for="licensechoice1">User</label>
+
+            <input type="radio" 
+            id="licensechoice2"
+            name="license"
+            value = "Provider"
+            [(ngModel)]="user.license"
+            #license='ngModel'>
+            <label for="licensechoice2">Provider</label></p>
+            <div *ngIf='err'>
+                <span *ngIf ="err.errors.license">{{err.errors.license.message}}</span>
+          
+            </div>
+          
+          <p class="text" *ngIf="license.value == 'Provider'">Company:
+              <input 
+              type="text" 
+              name="company" 
+              required 
+              minlength="3" 
+              [(ngModel)]="user.company"
+              #company='ngModel'
+              ><br><span *ngIf ="company.errors">Company  is Required</span>
+
+          </p>
+        
+        <hr>
+
+        <input [disabled]="regForm.invalid" class="button" type="submit" value="Register">
+
+  </form>
+</fieldset>
+
+
+
+
+
+

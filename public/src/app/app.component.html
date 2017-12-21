@@ -1,0 +1,58 @@
+<div class ='login' *ngIf ="user == null">
+    <fieldset id="login">
+      
+        <form #loginForm='ngForm'(submit)="login(logins)">
+            <p class="text">
+                <span *ngIf='loginerrs == true'class="text">Wrong Login Info</span>
+           
+                    <input [disabled]="loginForm.invalid" type="submit" value="Login" class="button">
+                Email: <input 
+              type="text" 
+              name="user.email"
+              required
+              minlength="1"
+              [(ngModel)]="logins.email"
+              #emails='ngModel'
+              >  |  
+      
+            Password <input 
+              type="password" 
+              name="user.password"
+              required
+              minlength="1"
+              [(ngModel)]="logins.password"
+              #passwords='ngModel'
+              >
+              
+               </p>
+              
+      
+            
+        </form>
+            
+      </fieldset>
+      
+</div>
+
+<div class ='loggedin' *ngIf="user != null">
+        <a [routerLink]="['/success']">{{user.email}}</a> | 
+        <div class="dropdown">
+                
+                <button class="dropbtn">Adds</button>
+                <div class="dropdown-content">
+                  <a href="#">Banner</a>
+                  <a href="#">Table</a>
+                  <a href="#">Video</a>
+                  <a href="#">Popup</a>
+                </div>
+              </div> |
+              <span *ngIf="user.license == 'Provider'"><a [routerLink]="['/newAdd']">Add a add</a>| </span>
+              <button (click) = "logout()">Logout</button>
+
+    
+
+</div>
+
+<div class= 'container'>
+<router-outlet></router-outlet>
+</div>
