@@ -35,7 +35,7 @@
 </div>
 
 <div class ='loggedin' *ngIf="user != null">
-        <a [routerLink]="['/success']">{{user.email}}</a> | 
+        <a class='dropbtn' [routerLink]="['/success']">{{user.email}}</a> | 
         <div class="dropdown">
                 
                 <button class="dropbtn">Adds</button>
@@ -46,8 +46,8 @@
                   <a href="#">Popup</a>
                 </div>
               </div> |
-              <span *ngIf="user.license == 'Provider'"><a [routerLink]="['/newAdd']">Add a add</a>| </span>
-              <button (click) = "logout()">Logout</button>
+              <span *ngIf="user.license == 'Provider'"><a class='dropbtn' [routerLink]="['/newAdd']">Add a add</a>| </span>
+              <button class='dropbtn' (click) = "logout()">Logout</button>
 
     
 

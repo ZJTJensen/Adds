@@ -5,7 +5,7 @@
 .loggedin{
     border: 1px solid black;
     display: inline-block;
-    position: absolute;
+    position: fixed;
     width: 100%;
     background-color: rgb(37, 143, 72);
     height: 75px;
@@ -16,7 +16,7 @@
     border: 1px solid black;
     display: inline-block;
     width: 100%;
-    position: absolute;
+    position: fixed;
     height: 75px;
     background-color: rgb(37, 143, 72);
     
@@ -25,7 +25,7 @@
 #login{
     float: right;
     border: 1px solid black;
-    margin: 0px 0px 0px 20px;
+    margin: 1px 0px 0px 20px;
     display: inline-block;
     padding: 10px 10px 10px 10px;
     background-color: rgb(48, 201, 99);
