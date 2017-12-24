@@ -11,7 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { UserService } from './user.service';
 import { SuccessComponent } from './success/success.component';
 import {FilterPipe, SortByPipe} from './pipe';
-import { NewAddComponent } from './new-add/new-add.component'
+import { NewAddComponent } from './new-add/new-add.component';
+import { AddsComponent } from './adds/adds.component'
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { NewAddComponent } from './new-add/new-add.component'
     LoginComponent,
     SuccessComponent,
     FilterPipe, 
-    SortByPipe, NewAddComponent
+    SortByPipe, NewAddComponent, AddsComponent
   ],
   imports: [
     ImageUploadModule.forRoot(),

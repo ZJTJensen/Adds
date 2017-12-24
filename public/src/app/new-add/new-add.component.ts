@@ -40,5 +40,7 @@ export class NewAddComponent implements OnInit {
       console.log(this.img)
       this._us.newImg(this.img)
       this.add = new Add
+
+      this._router.navigate(['success']);
     }
 }

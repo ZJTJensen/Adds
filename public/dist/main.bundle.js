@@ -17,6 +17,107 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 
 /***/ }),
 
+/***/ "../../../../../src/app/adds/adds.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/adds/adds.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<fieldset *ngIf = \"user.license == 'Provider'\">\n  <div style=\"width: 100%; height: 500px; overflow: scroll; \">\n      <div *ngFor = \"let img of imgs\">\n          <div *ngIf=\"img.company==user.company\">\n            <p *ngIf = \"img.type == name\">\n          {{img.company}}  <br>\n          type: {{img.type}} <br><hr>\n        <img src=\"{{img.src}}\"><button (click) = 'deleteImg(img._id)'>Delete this add.</button> \n        \n            </p>\n          </div>\n      </div>\n  </div>\n</fieldset>\n\n<fieldset *ngIf = \"user.license == 'User'\">\n    <div style=\"width: 100%; height: 100%; overflow: scroll; \">\n        <div *ngFor = \"let img of imgs\">\n          <p *ngIf = \"img.type == name\">\n          {{img.company}} <br>\n          Type: {{img.type}} <br><hr>\n        <img src=\"{{img.src}}\">\n        </p>\n        </div>\n      \n      </div>\n\n\n</fieldset>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/adds/adds.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user_service__ = __webpack_require__("../../../../../src/app/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AddsComponent = (function () {
+    function AddsComponent(_us, _router, _route) {
+        var _this = this;
+        this._us = _us;
+        this._router = _router;
+        this._route = _route;
+        this.user = null;
+        this.imgs = [];
+        this.name = '';
+        this._route.paramMap.subscribe(function (params) {
+            _this.name = params.get('name');
+        });
+    }
+    AddsComponent.prototype.create = function () {
+        var _this = this;
+        this._us.loggedIn.subscribe(function (success) {
+            console.log(success);
+            if (success === false) {
+                console.log("hello");
+                _this.user = null;
+                _this._router.navigate(['login']);
+                return;
+            }
+            else {
+                _this.user = success;
+            }
+        }, function (err) { console.log('err'); });
+    };
+    AddsComponent.prototype.logout = function () {
+        this._us.clearUser();
+        this.user = null;
+        return this._router.navigate(['login']);
+    };
+    AddsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        console.log(this.name);
+        this.create();
+        this._us.allImg().subscribe(function (success) { _this.imgs = success; }, function (err) { console.log('erors'); });
+    };
+    AddsComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-adds',
+            template: __webpack_require__("../../../../../src/app/adds/adds.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/adds/adds.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]])
+    ], AddsComponent);
+    return AddsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/app-routing.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27,6 +128,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__success_success_component__ = __webpack_require__("../../../../../src/app/success/success.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__new_add_new_add_component__ = __webpack_require__("../../../../../src/app/new-add/new-add.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__adds_adds_component__ = __webpack_require__("../../../../../src/app/adds/adds.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,19 +140,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_2__login_login_component__["a" /* LoginComponent */] },
     { path: 'success', component: __WEBPACK_IMPORTED_MODULE_3__success_success_component__["a" /* SuccessComponent */] },
-    { path: 'newAdd', component: __WEBPACK_IMPORTED_MODULE_4__new_add_new_add_component__["a" /* NewAddComponent */] }
+    { path: 'newAdd', component: __WEBPACK_IMPORTED_MODULE_4__new_add_new_add_component__["a" /* NewAddComponent */] },
+    { path: 'adds/:name', component: __WEBPACK_IMPORTED_MODULE_5__adds_adds_component__["a" /* AddsComponent */] }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
     }
     AppRoutingModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */].forRoot(routes)],
-            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */]]
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forRoot(routes)],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */]]
         })
     ], AppRoutingModule);
     return AppRoutingModule;
@@ -81,7 +185,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class ='login' *ngIf =\"user == null\">\r\n    <fieldset id=\"login\">\r\n      \r\n        <form #loginForm='ngForm'(submit)=\"login(logins)\">\r\n            <p class=\"text\">\r\n                <span *ngIf='loginerrs == true'class=\"text\">Wrong Login Info</span>\r\n           \r\n                    <input [disabled]=\"loginForm.invalid\" type=\"submit\" value=\"Login\" class=\"button\">\r\n                Email: <input \r\n              type=\"text\" \r\n              name=\"user.email\"\r\n              required\r\n              minlength=\"1\"\r\n              [(ngModel)]=\"logins.email\"\r\n              #emails='ngModel'\r\n              >  |  \r\n      \r\n            Password <input \r\n              type=\"password\" \r\n              name=\"user.password\"\r\n              required\r\n              minlength=\"1\"\r\n              [(ngModel)]=\"logins.password\"\r\n              #passwords='ngModel'\r\n              >\r\n              \r\n               </p>\r\n              \r\n      \r\n            \r\n        </form>\r\n            \r\n      </fieldset>\r\n      \r\n</div>\r\n\r\n<div class ='loggedin' *ngIf=\"user != null\">\r\n        <a class='dropbtn' [routerLink]=\"['/success']\">{{user.email}}</a> | \r\n        <div class=\"dropdown\">\r\n                \r\n                <button class=\"dropbtn\">Adds</button>\r\n                <div class=\"dropdown-content\">\r\n                  <a href=\"#\">Banner</a>\r\n                  <a href=\"#\">Table</a>\r\n                  <a href=\"#\">Video</a>\r\n                  <a href=\"#\">Popup</a>\r\n                </div>\r\n              </div> |\r\n              <span *ngIf=\"user.license == 'Provider'\"><a class='dropbtn' [routerLink]=\"['/newAdd']\">Add a add</a>| </span>\r\n              <button class='dropbtn' (click) = \"logout()\">Logout</button>\r\n\r\n    \r\n\r\n</div>\r\n\r\n<div class= 'container'>\r\n<router-outlet></router-outlet>\r\n</div>"
+module.exports = "<div class ='login' *ngIf =\"user == null\">\r\n    <fieldset id=\"login\">\r\n      \r\n        <form #loginForm='ngForm'(submit)=\"login(logins)\">\r\n            <p class=\"text\">\r\n                <span *ngIf='loginerrs == true'class=\"text\">Wrong Login Info</span>\r\n           \r\n                    <input [disabled]=\"loginForm.invalid\" type=\"submit\" value=\"Login\" class=\"button\">\r\n                Email: <input \r\n              type=\"text\" \r\n              name=\"user.email\"\r\n              required\r\n              minlength=\"1\"\r\n              [(ngModel)]=\"logins.email\"\r\n              #emails='ngModel'\r\n              >  |  \r\n      \r\n            Password <input \r\n              type=\"password\" \r\n              name=\"user.password\"\r\n              required\r\n              minlength=\"1\"\r\n              [(ngModel)]=\"logins.password\"\r\n              #passwords='ngModel'\r\n              >\r\n              \r\n               </p>\r\n              \r\n      \r\n            \r\n        </form>\r\n            \r\n      </fieldset>\r\n      \r\n</div>\r\n\r\n<div class ='loggedin' *ngIf=\"user != null\">\r\n        <a class='dropbtn' [routerLink]=\"['/success']\">{{user.email}}</a> | \r\n        <div class=\"dropdown\">\r\n                \r\n                <button class=\"dropbtn\">Adds</button>\r\n                <div class=\"dropdown-content\">\r\n                  <a [routerLink]=\"['/adds','banner']\">Banner</a>\r\n                  <a [routerLink]=\"['/adds','table']\">Table</a>\r\n                  <a [routerLink]=\"['/adds','video']\">Video</a>\r\n                  <a [routerLink]=\"['/adds','popup']\">Popup</a>\r\n                </div>\r\n              </div> |\r\n              <span *ngIf=\"user.license == 'Provider'\"><a class='dropbtn' [routerLink]=\"['/newAdd']\">Add a add</a>| </span>\r\n              <button class='dropbtn' (click) = \"logout()\">Logout</button>\r\n\r\n    \r\n\r\n</div>\r\n\r\n<div class= 'container'>\r\n<router-outlet></router-outlet>\r\n</div>"
 
 /***/ }),
 
@@ -157,7 +261,7 @@ var AppComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/app.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__user_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -183,12 +287,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__success_success_component__ = __webpack_require__("../../../../../src/app/success/success.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pipe__ = __webpack_require__("../../../../../src/app/pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__new_add_new_add_component__ = __webpack_require__("../../../../../src/app/new-add/new-add.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__adds_adds_component__ = __webpack_require__("../../../../../src/app/adds/adds.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -211,7 +317,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_7__login_login_component__["a" /* LoginComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__success_success_component__["a" /* SuccessComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__pipe__["a" /* FilterPipe */],
-                __WEBPACK_IMPORTED_MODULE_10__pipe__["b" /* SortByPipe */], __WEBPACK_IMPORTED_MODULE_11__new_add_new_add_component__["a" /* NewAddComponent */]
+                __WEBPACK_IMPORTED_MODULE_10__pipe__["b" /* SortByPipe */], __WEBPACK_IMPORTED_MODULE_11__new_add_new_add_component__["a" /* NewAddComponent */], __WEBPACK_IMPORTED_MODULE_12__adds_adds_component__["a" /* AddsComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_5_angular2_image_upload__["a" /* ImageUploadModule */].forRoot(),
@@ -303,7 +409,7 @@ var LoginComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/login/login.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__user_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -382,6 +488,7 @@ var NewAddComponent = (function () {
         console.log(this.img);
         this._us.newImg(this.img);
         this.add = new __WEBPACK_IMPORTED_MODULE_1__user__["a" /* Add */];
+        this._router.navigate(['success']);
     };
     NewAddComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -390,7 +497,7 @@ var NewAddComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/new-add/new-add.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__user_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
     ], NewAddComponent);
     return NewAddComponent;
 }());
@@ -471,7 +578,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/success/success.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n\n<fieldset *ngIf = \"user.license == 'Provider'\">\n  <div style=\"width: 100%; height: 500px; overflow: scroll; \">\n      <div *ngFor = \"let img of imgs\">\n          <p *ngIf=\"img.company==user.company\">\n          {{img.company}}  <br>\n          type: {{img.type}} <br><hr>\n        <img src=\"{{img.src}}\"><button (click) = 'deleteImg(img._id)'>Delete this add.</button> \n        \n        </p>\n      </div>\n  </div>\n</fieldset>\n\n<fieldset *ngIf = \"user.license == 'User'\">\n    <div style=\"width: 100%; height: 100%; overflow: scroll; \">\n        <p *ngFor = \"let img of imgs\">\n          \n          {{img.company}} <br>\n          Type: {{img.type}} <br><hr>\n        <img src=\"{{img.src}}\">\n        </p>\n      \n      </div>\n\n\n</fieldset>"
+module.exports = "\n\n\n\n<fieldset *ngIf = \"user.license == 'Provider'\">\n  <div style=\"width: 79%; height: 500px; overflow: scroll; display: inline-block; vertical-align: top;\">\n      \n    <div *ngFor = \"let img of imgs\">\n        <hr>\n          <p *ngIf=\"img.company==user.company\">\n          {{img.company}}  <br>\n          type: {{img.type}} <br>\n        <img src=\"{{img.src}}\"><button (click) = 'deleteImg(img._id)'>Delete this add.</button> \n        \n        </p>\n      </div>\n  </div>\n  <div style=\"width: 20%; height: 500px; display: inline-block; \">\n    <p>You may only view your own images.</p>\n  </div>\n</fieldset>\n\n<fieldset *ngIf = \"user.license == 'User'\">\n    <div style=\"width: 100%; height: 100%; overflow: scroll; \">\n        <hr>  \n      <p *ngFor = \"let img of imgs\">\n          \n          {{img.company}} <br>\n          Type: {{img.type}} <br>\n        <img src=\"{{img.src}}\">\n        </p>\n      \n      </div>\n\n\n</fieldset>"
 
 /***/ }),
 
@@ -539,7 +646,7 @@ var SuccessComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/success/success.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
     ], SuccessComponent);
     return SuccessComponent;
 }());

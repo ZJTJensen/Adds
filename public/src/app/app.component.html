@@ -40,10 +40,10 @@
                 
                 <button class="dropbtn">Adds</button>
                 <div class="dropdown-content">
-                  <a href="#">Banner</a>
-                  <a href="#">Table</a>
-                  <a href="#">Video</a>
-                  <a href="#">Popup</a>
+                  <a [routerLink]="['/adds','banner']">Banner</a>
+                  <a [routerLink]="['/adds','table']">Table</a>
+                  <a [routerLink]="['/adds','video']">Video</a>
+                  <a [routerLink]="['/adds','popup']">Popup</a>
                 </div>
               </div> |
               <span *ngIf="user.license == 'Provider'"><a class='dropbtn' [routerLink]="['/newAdd']">Add a add</a>| </span>
